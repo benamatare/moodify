@@ -1,16 +1,21 @@
 <h1>Signup New Sadboi</h1>
-<%= form_for @user do |f| %>
-<%= f.label :username%>
-<%= f.text_field :username%><br>
-<%= f.label :password%>
-<%= f.text_field :password%><br>
-<%= f.label :password_confirmation%>
-<%= f.password_field :password_confirmation%><br>
-<%= f.label :first_name%>
-<%= f.text_field :first_name%><br>
-<%= f.label :last_name%>
-<%= f.text_field :last_name%><br>
-<%= f.label :email%>
-<%= f.text_field :email%><br>
-<%= f.submit %>
+<%= form_tag('/signup', method: :post) do  %>
+
+<br>cannot contain any special characters<br>
+<%= label_tag "Enter New Username" %>
+<%= text_field_tag :'[user]username'%><br>
+
+<br>must contain at least 1 number, 1 special character, and be at least 7 characers long<br>
+<%= label_tag "Enter Password" %>
+<%= password_field_tag :'[user]password'%>
+
+<%= label_tag "Confirm Password" %>
+<%= password_field_tag :'[user]password_confirmation'%><br>
+<%= label_tag "Enter First Name" %>
+<%= text_field_tag :'[user]first_name'%><br>
+<%= label_tag "Enter Last Name" %>
+<%= text_field_tag :'[user]last_name'%><br>
+<%= label_tag "Enter Email address" %>
+<%= text_field_tag :'[user]email'%><br>
+<%= submit_tag "Sign up" %>
 <% end %>

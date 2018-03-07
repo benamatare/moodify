@@ -1,1 +1,13 @@
-<h1> yo </h1>
+<h1><%= @user.username.capitalize %> Playlists</h1>
+<% @user.playlists.each do |playlist|%>
+<%= link_to playlist.title, user_playlist_path(@user, playlist) %><br>
+<% end %>
+
+<% if @owner_homepage %>
+<h1>Create a new playlist</h1>
+  <%= form_tag(new_user_playlist_path(@user), method: :get) do %>
+  <label>Title</label>
+  <%= text_field_tag :title %>
+  <%= submit_tag 'Create a Playlist' %>
+  <% end %>
+<% end %>

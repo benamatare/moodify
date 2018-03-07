@@ -4,7 +4,7 @@ class CreateSongs < ActiveRecord::Migration[5.1]
       t.string :title
       t.string :artist
       t.integer :mood
-
+      t.text :youtube_link
       t.timestamps
     end
   end
