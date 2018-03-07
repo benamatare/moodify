@@ -1,0 +1,7 @@
+<h1> Set the Mood of the song </h1>
+
+<%= form_tag(user_playlist_playlist_song_path(user_id: @user_id, playlist_id: @playlist_song.playlist_id, playlist_song_id: @playlist_song.id), method: :patch) do %>
+<label>Mood Rating</label>
+<%= number_field_tag :mood,nil, min: 1, max: 10 %>
+<%= submit_tag %>
+<% end %>

@@ -5,7 +5,7 @@
 
 <% if @owner_homepage %>
 <h1>Create a new playlist</h1>
-  <%= form_tag(new_user_playlist_path(@user), method: :get) do %>
+  <%= form_tag(user_playlists_path(@user), method: :post) do %>
   <label>Title</label>
   <%= text_field_tag :title %>
   <%= submit_tag 'Create a Playlist' %>

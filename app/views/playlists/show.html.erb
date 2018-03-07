@@ -1,0 +1,24 @@
+<h1> Songs within your playlist</h1>
+
+<h3> Sadboi rating: <%=@playlist.mood%></h3>
+show all the videos of the playlist from the playlist songs
+iterate through all the plasylistsong objects  b/c thats the only way we can access the Songs
+
+
+
+<% @playlist.playlist_songs.each do |playlist_song| %>
+  <% videoId = Song.find(playlist_song.song_id).video_id %>
+  <% Yt.configuration.api_key = "AIzaSyDXvv8XUM7amNwkw_LD9lXwZUstWcVO0xw" %>
+  <% video = Yt::Video.new id: videoId %>
+  <h4><%= video.title %></h4> <br>
+  <p><%= playlist_song.mood %></p>
+  <iframe id="ytplayer" type="text/html" width="640" height="360"
+  src="https://www.youtube.com/embed/<%=videoId%>"
+  frameborder="0"></iframe>
+<% end %>
+
+<% if @owner_homepage %>
+<%= button_to 'Add a song', edit_user_playlist_path(@playlist.user_id, @playlist), :method => :get %>
+<% end %>
+
+<%= button_to 'back to user profile', user_path(@playlist.user_id), :method => :get %>

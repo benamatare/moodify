@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <nav>
+      <% if session[:user_id] %>
+        <h1>Look for a playlist that fits your sadboi levels</h1>
+        <%= form_tag(search_by_mood_path, method: :post) do %>
+        <%= number_field_tag :mood, nil, min:1, max:10, placeholder: "Enter a Mood" %>
+        <%= submit_tag ":'(" %>
+        <% end %>
+      <% end %>
+    </nav>
     <%= yield %>
 
     <% if session[:user_id] %>

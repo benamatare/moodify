@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180306153351) do
-
-  create_table "moods", force: :cascade do |t|
-    t.integer "mood_rating"
-    t.integer "playlist_song_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20180306153335) do
 
   create_table "playlist_songs", force: :cascade do |t|
     t.integer "playlist_id"
@@ -37,10 +30,8 @@ ActiveRecord::Schema.define(version: 20180306153351) do
   end
 
   create_table "songs", force: :cascade do |t|
-    t.string "title"
-    t.string "artist"
     t.integer "mood"
-    t.text "youtube_link"
+    t.string "video_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

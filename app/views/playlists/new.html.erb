@@ -1,9 +1,0 @@
-<h1>Add Songs (sadboi only plz) to <%= @playlist.title %></h1>
-<h3>Search for a song</h3>
-
-<%= form_tag(user_playlist_search_path(@playlist.user_id, @playlist), method: :get) do %>
-<%= text_field_tag :song_and_artist %>
-<%= submit_tag "Search" %>
-<% end %>
-
-<%= button_to("Stop Adding Songs", user_playlist_path(@playlist.user_id, @playlist))%>
