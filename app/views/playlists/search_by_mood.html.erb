@@ -1,0 +1,7 @@
+We found <%= pluralize(@playlists.size, "playlist") %> that fit your mood.
+
+<% @playlists.each do |playlist| %>
+  <ul>
+    <li><%= link_to(playlist.title, user_playlist_path(playlist.user_id, playlist)) %> </li>
+  </ul>
+<% end %>

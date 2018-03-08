@@ -19,6 +19,7 @@ iterate through all the plasylistsong objects  b/c thats the only way we can acc
 
 <% if @owner_homepage %>
 <%= button_to 'Add a song', edit_user_playlist_path(@playlist.user_id, @playlist), :method => :get %>
+<%= button_to 'Delete This Playlist', user_playlist_path(@playlist.user_id, @playlist), method: :delete %>
 <% end %>
 
-<%= button_to 'back to user profile', user_path(@playlist.user_id), :method => :get %>
+<%= button_to "See which sadboi owns this playlist", user_path(@playlist.user_id), :method => :get %>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # resources :songs, :playlists, :users
 
   resources :users, only: [:create, :show, :edit, :update, :destroy] do
+    get 'playlists/search_by_mood', to: 'playlists#search_by_mood'
     resources :playlists, only: [:create, :edit, :show, :destroy] do
       post 'search', to: 'playlists#search'
       resources :playlist_songs
@@ -17,7 +18,6 @@ Rails.application.routes.draw do
 
   post '/logout', to: 'users#logout'
 
-  post '/search_by_mood', to: 'application#search_by_mood'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

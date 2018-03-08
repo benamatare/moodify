@@ -9,8 +9,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def search_by_mood
-    
-  end
+
 
 end

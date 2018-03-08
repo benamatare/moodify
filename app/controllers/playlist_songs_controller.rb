@@ -23,7 +23,7 @@ class PlaylistSongsController < ApplicationController
     moods =  @playlist.playlist_songs.map do |ps|
         ps.mood
       end
-    @playlist.mood = moods.inject{ |sum, el| sum + el }.to_f / moods.size
+    @playlist.mood = moods.inject{ |sum, el| sum + el } / moods.size
     @playlist.save
 
     redirect_to "/users/#{params[:user_id]}/playlists/#{@playlist_song.playlist.id}"

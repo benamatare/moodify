@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sadboify</title>
+    <title>Moodify</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,9 +12,10 @@
     <nav>
       <% if session[:user_id] %>
         <h1>Look for a playlist that fits your sadboi levels</h1>
-        <%= form_tag(search_by_mood_path, method: :post) do %>
+        <%= form_tag(user_playlists_search_by_mood_path(session[:user_id]), method: :get) do %>
+        <%= label_tag "Enter your mood" %>
         <%= number_field_tag :mood, nil, min:1, max:10, placeholder: "Enter a Mood" %>
-        <%= submit_tag ":'(" %>
+        <%= submit_tag "︻╦╤─" %>
         <% end %>
       <% end %>
     </nav>
@@ -22,7 +23,8 @@
 
     <% if session[:user_id] %>
       <%= button_to 'Logout', action: 'logout', controller: 'users' %>
-      <% end %>
+      <%= button_to 'Home', user_path(session[:user_id]), :method => :get %>
 
+  <% end %>
   </body>
 </html>

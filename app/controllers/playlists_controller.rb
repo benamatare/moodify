@@ -4,8 +4,14 @@ class PlaylistsController < ApplicationController
 
   def create
     @playlist = Playlist.new(title: params[:title], user_id: params[:user_id])
-    @playlist.save
-    redirect_to edit_user_playlist_path(@playlist.user_id, @playlist)
+    # byebug
+    if !@playlist.valid?
+      redirect_to user_path(params[:user_id])
+    else
+      @playlist.save
+      redirect_to edit_user_playlist_path(@playlist.user_id, @playlist)
+    end
+
   end
 
   def edit
@@ -39,11 +45,11 @@ class PlaylistsController < ApplicationController
 
   def show
     @playlist = Playlist.find(params[:id])
-    moods =  @playlist.playlist_songs.map do |ps|
-        ps.mood
-      end
-    @sadboi_rating = moods.inject{ |sum, el| sum + el }.to_f / moods.size
-    
+    # moods =  @playlist.playlist_songs.map do |ps|
+    #     ps.mood
+    #   end
+    # @sadboi_rating = moods.inject{ |sum, el| sum + el }.to_f / moods.size
+
     if session[:user_id] == @playlist.user_id
       @owner_homepage  = true
     else
@@ -51,7 +57,15 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def search_by_mood
+    @playlists = Playlist.where(mood: params[:mood])
+  end
 
+  def destroy
+    playlist = Playlist.find(params[:id])
+    playlist.destroy
+    redirect_to user_path(params[:user_id])
+  end
 
 private
   def call_login?
