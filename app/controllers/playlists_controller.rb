@@ -24,7 +24,7 @@ class PlaylistsController < ApplicationController
     #create playlist_song with self.id and the song_id
     #prompt to enter mood? so a redirect_to a mood action?
     #once the song is added, we redirect_to the new page, which will have the search form and a button to stop adding songs
-    Yt.configuration.api_key = "AIzaSyDXvv8XUM7amNwkw_LD9lXwZUstWcVO0xw"
+    Yt.configuration.api_key = "enter api key here"
     videoId = helpers.search_youtube(params[:song_and_artist])
       #take me to that temp song#show page
     song = Song.find_or_create_by(video_id: videoId)
