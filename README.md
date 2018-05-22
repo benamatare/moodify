@@ -1,6 +1,7 @@
 # README
 
-Moodify - A playlist generating web app, where you can listen to music based on your mood.
+Moodify - A playlist generating web app, where you can listen to music based on your mood.</br>
+Created by Ben Matare & Jairo Espinosa
 
 ____________
 Demo -> https://www.youtube.com/watch?v=7YXeMFeY6eM</br>
